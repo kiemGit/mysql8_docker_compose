@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_dash
+    environment:
+      MYSQL_ROOT_PASSWORD: sap123ok
+      MYSQL_DATABASE: test
+      MYSQL_USER: hakim
+      MYSQL_PASSWORD: sap123ok
+      MYSQL_ROOT_HOST: '%'
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    networks:
+      - mynetwork
+    volumes:
+      - ./my.cnf:/etc/mysql/conf.d/custom-my.cnf
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+
+networks:
+  mynetwork:
+    driver: bridge

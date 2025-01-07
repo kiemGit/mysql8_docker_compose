@@ -1,0 +1,3 @@
+CREATE USER 'hakim'@'%%' IDENTIFIED WITH 'mysql_native_password' BY 'sap123ok';
+GRANT ALL PRIVILEGES ON *.* TO 'hakim'@'%%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
